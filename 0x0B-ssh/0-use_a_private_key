@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Connects to server 100.25.222.186 with key in ~ssh -i /home/idris/.ssh/id_rsa 
+
+ssh -i /home/idris/.ssh/id_rsa ubuntu@100.25.222.186
