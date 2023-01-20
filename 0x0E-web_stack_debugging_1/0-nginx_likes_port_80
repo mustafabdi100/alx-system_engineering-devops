@@ -1,13 +1,28 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if Nginx is running
 if ! service nginx status | grep -q "running"; then
   service nginx start
 fi
 
-# Verify Nginx is listening on port 80
-if ! netstat -tulnp | grep -q ":80.*nginx"; then
-  sed -i "s/listen.*;/listen 80;/g" /etc/nginx/nginx.conf
-  service nginx restart
-fi
+# Remove the default configuration file
+rm /etc/nginx/sites-enabled/default
+
+# Create a new default configuration file
+echo "server {
+    listen 80;
+    server_name _;
+
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Enable the new default configuration file
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Restart Nginx to apply the changes
+service nginx restart
+
 
