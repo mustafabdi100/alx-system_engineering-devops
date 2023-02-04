@@ -1,23 +1,7 @@
 #!/usr/bin/env bash
 # fix container:: task 2
-
-#!/bin/bash
-
-# Check if the nginx user exists
-if ! id nginx &> /dev/null; then
-    # Create the nginx user if it doesn't exist
-    useradd -r nginx
-fi
-
-# Stop the current Nginx process
-service nginx stop
-
-# Change the user for Nginx to the nginx user
-sed -i 's/user www-data;/user nginx;/g' /etc/nginx/nginx.conf
-
-# Listen on all active IPs on port 8080
-sed -i 's/listen 80;/listen 0.0.0.0:8080;/g' /etc/nginx/sites-available/default
-
-# Restart Nginx as the nginx user
-service nginx start
-
+pkill -f apache2
+chmod 644 /etc/nginx/nginx.conf
+sed -i "1i user nginx;" /etc/nginx/nginx.conf
+sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
+sudo -u nginx service nginx restart
