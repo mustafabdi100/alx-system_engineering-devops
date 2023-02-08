@@ -16,7 +16,7 @@ completed =0
 pending=0
 users_id_by_name={}
 completed_title=[]
-
+# find the completed tasks
 for i in users:
 	users_id_by_name[i['id']]=i['name']
 
