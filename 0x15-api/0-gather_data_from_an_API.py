@@ -22,6 +22,4 @@ if __name__ == '__main__':
             done += 1
 
     print('Employee {} is done with tasks({}/{}):'.format(rqname, done, total))
-    for task in rqdata:
-        if task.get('completed'):
-            print('\t {}'.format(task.get('title')))
+
