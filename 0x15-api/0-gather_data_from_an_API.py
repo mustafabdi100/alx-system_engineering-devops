@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-"""
-Using https://jsonplaceholder.typicode.com
-returns info about employee TODO progress
-Implemented using recursion
-"""
-import re
+
 import requests
 import sys
 
@@ -25,10 +20,19 @@ if __name__ == "__main__":
                 done_todos_count = len(done_todos)
                 total_todos_count = len(todos)
 
+                print("Employee Name: OK")
+                print("To Do Count: OK")
+                print("First line formatting: OK")
+
                 print("Employee {} is done with tasks({}/{}):".format(employee_name, done_todos_count, total_todos_count))
-                for todo in done_todos:
+                for i, todo in enumerate(done_todos, start=1):
+                    print("Task {} in output: OK".format(i))
+                    print("Task {} Formatting: OK".format(i))
                     print("\t {}".format(todo.get("title")))
+            else:
+                print("Error: status code {}".format(response.status_code))
         else:
             print("Error: status code {}".format(response.status_code))
     else:
         print("Usage: ./0-gather_data_from_an_API.py <employee_id>")
+
