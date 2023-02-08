@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 import requests as rq
 import sys
+"""
+Using https://jsonplaceholder.typicode.com
+returns info about employee TODO progress
+Implemented using recursion
+"""
+
 users=rq.get("https://jsonplaceholder.typicode.com/users").json()
 tasks=rq.get("https://jsonplaceholder.typicode.com/todos").json()
 
