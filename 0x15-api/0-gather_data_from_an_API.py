@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests as rq
 import sys
 users=rq.get("https://jsonplaceholder.typicode.com/users").json()
